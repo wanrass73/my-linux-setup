@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Gemini CLI
 Comment=Launch the Gemini Command Line Interface
-Exec=/home/aiwasevil/Gemini-Cli/launch_gemini.sh -m gemini-1.5-flash
+Exec=/home/aiwasevil/Gemini-Cli/config/launch_gemini.sh -m gemini-1.5-flash
 Icon=utilities-terminal
 Terminal=true
 Type=Application

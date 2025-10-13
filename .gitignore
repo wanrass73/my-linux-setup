@@ -1,0 +1,24 @@
+# Build artifacts and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+*.o
+*.a
+*.so
+*.lo
+*.la
+*.pyc
+__pycache__/
+
+# Installation archives (already deleted, but good to ignore if they reappear)
+fastfetch.tar.gz
+starship.tar.gz
+
+# OS-specific files
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Gemini CLI specific
+.gemini/
