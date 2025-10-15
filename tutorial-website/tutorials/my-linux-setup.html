@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Linux Setup Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>My Linux Setup Tutorial</h1>
+    </header>
+    <main>
+        <h2>Documenting Your Linux Setup</h2>
+        <p>This tutorial serves as a guide for documenting your personalized Linux setup. While this specific folder (<code>my-linux-setup</code>) is currently empty, it's an ideal place to store configuration files, scripts, and notes that define your unique Linux environment.</p>
+
+        <h3>Why Document Your Setup?</h3>
+        <ul>
+            <li><strong>Reproducibility:</strong> Easily recreate your setup on a new machine or after a fresh OS install.</li>
+            <li><strong>Sharing:</strong> Share your configurations with others or collaborate on improvements.</li>
+            <li><strong>Backup:</strong> Keep a version-controlled backup of your essential dotfiles and scripts.</li>
+            <li><strong>Understanding:</strong> A clear record helps you understand how different components of your system are configured and interact.</li>
+        </ul>
+
+        <h3>What to Include in Your <code>my-linux-setup</code> Folder:</h3>
+
+        <ol>
+            <li>
+                <h4>Dotfiles:</h4>
+                <ul>
+                    <li>Configuration files for your shell (e.g., <code>.bashrc</code>, <code>.zshrc</code>, <code>.config/fish/config.fish</code>).</li>
+                    <li>Configuration files for your text editor (e.g., <code>.vimrc</code>, <code>.config/nvim/init.vim</code>, <code>.config/helix/config.toml</code>).</li>
+                    <li>Configuration files for your window manager or desktop environment (e.g., <code>.config/i3/config</code>, <code>.config/hypr/hyprland.conf</code>, <code>.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml</code>).</li>
+                    <li>Configuration files for terminal emulators (e.g., <code>~/.config/kitty/kitty.conf</code>, <code>~/.local/share/konsole/*.profile</code>).</li>
+                    <li>Configuration files for other CLI tools (e.g., <code>~/.config/starship.toml</code>, <code>~/.config/fastfetch/config.jsonc</code>, <code>~/.config/lsd/config.yaml</code>).</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Custom Scripts:</h4>
+                <p>Any custom shell scripts you use for automation, system maintenance, or specific workflows (like the <code>random-fastfetch.sh</code> or <code>WaybarCava.sh</code> examples).</p>
+            </li>
+            <li>
+                <h4>Installation Notes/Instructions:</h4>
+                <p>A <code>README.md</code> file (like this one!) explaining how to set up your system, what dependencies are needed, and how to apply your configurations.</p>
+                <p>Step-by-step guides for installing specific software or configuring complex components.</p>
+            </li>
+            <li>
+                <h4>Theming and Appearance Assets:</h4>
+                <p>Custom themes, icon packs, or wallpaper configurations.</p>
+            </li>
+        </ol>
+
+        <h3>How to Start Documenting:</h3>
+        <ol>
+            <li><strong>Identify key configuration files:</strong> Think about the tools and applications you use daily and where their configurations are stored.</li>
+            <li><strong>Copy them to this folder:</strong> Create a structured sub-directory within <code>my-linux-setup</code> (e.g., <code>my-linux-setup/dotfiles/zsh/.zshrc</code>, <code>my-linux-setup/scripts/</code>).</li>
+            <li><strong>Add comments and explanations:</strong> Use <code>README.md</code> files within subdirectories to explain the purpose of each file and how to use it.</li>
+            <li><strong>Use Version Control:</strong> Initialize a Git repository in this folder and commit your changes regularly. This allows you to track changes and easily revert if needed.</li>
+        </ol>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsh Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Zsh Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Mastering Your Zsh Shell with Custom Configuration</h2>
+        <p>This tutorial delves into a highly customized Zsh configuration (<code>.zshrc</code>), showcasing how to leverage Oh My Zsh, various plugins, custom functions, aliases, and integrations with tools like Starship, Fastfetch, and <code>lsd</code> to create a powerful and personalized command-line experience.</p>
+
+        <h3>Components:</h3>
+        <ul>
+            <li><code>.zshrc</code>: The main configuration file for the Zsh shell.</li>
+            <li>Oh My Zsh: A framework for Zsh configuration.</li>
+            <li>Plugins: <code>git</code>, <code>archlinux</code>, <code>zsh-autosuggestions</code>, <code>zsh-syntax-highlighting</code>.</li>
+            <li>Starship: A cross-shell prompt.</li>
+            <li>Fastfetch: A system information tool.</li>
+            <li><code>lsd</code>: A modern <code>ls</code> replacement.</li>
+            <li><code>vivid</code>: A tool for generating <code>LS_COLORS</code>.</li>
+            <li><code>thefuck</code>: A magnificent power tool that corrects your previous console command.</li>
+        </ul>
+
+        <h3>Steps:</h3>
+
+        <ol>
+            <li>
+                <h4>Understanding the <code>.zshrc</code> Structure:</h4>
+                <p>The <code>.zshrc</code> file is executed every time a new Zsh session starts. It's where you define your shell's behavior, appearance, and functionality.</p>
+                <p><strong>Location:</strong> Typically found at <code>~/.zshrc</code>.</p>
+            </li>
+            <li>
+                <h4>Oh My Zsh Setup:</h4>
+                <ul>
+                    <li><code>export ZSH="$HOME/.oh-my-zsh"</code>: Defines the path to your Oh My Zsh installation.</li>
+                    <li><code>ZSH_THEME="agnosterzak"</code>: Sets the theme for your Zsh prompt. <code>agnosterzak</code> is a popular choice, often requiring a powerline-compatible font.</li>
+                    <li><code>plugins=(...)</code>: Lists the Oh My Zsh plugins to be loaded.
+                        <ul>
+                            <li><code>git</code>: Provides Git aliases and functions.</li>
+                            <li><code>archlinux</code>: Arch Linux specific utilities.</li>
+                            <li><code>zsh-autosuggestions</code>: Suggests commands as you type based on your history.</li>
+                            <li><code>zsh-syntax-highlighting</code>: Highlights commands as you type.</li>
+                        </ul>
+                    </li>
+                    <li><code>source $ZSH/oh-my-zsh.sh</code>: Loads the Oh My Zsh framework.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>History and PATH Configuration:</h4>
+                <ul>
+                    <li><strong>FZF Integration (<code>source &lt;(fzf --zsh)</code>):</strong> Enables fuzzy searching through your command history using <code>Ctrl+R</code>.</li>
+                    <li><strong>History Settings:</strong>
+                        <ul>
+                            <li><code>HISTFILE=~/.zsh_history</code>: Specifies the history file.</li>
+                            <li><code>HISTSIZE=10000</code>, <code>SAVEHIST=10000</code>: Sets the number of commands to keep in history.</li>
+                            <li><code>setopt appendhistory</code>: Appends new history lines to the history file.</li>
+                        </ul>
+                    </li>
+                    <li><strong>PATH Modifications:</strong>
+                        <ul>
+                            <li><code>export PATH="/home/aiwasevil/Gemini-Cli/fastfetch-linux-amd64/usr/bin:$PATH"</code></li>
+                            <li><code>export PATH="/home/aiwasevil/Gemini-Cli/fastfetch-config:$PATH"</code>: These lines add custom directories to your system's <code>PATH</code>, allowing you to execute binaries and scripts located in those directories without specifying their full path.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h4>Custom Functions (<code>show_cheatsheet</code>):</h4>
+                <p>The <code>show_cheatsheet</code> function provides a quick reference for common commands, including Pacman, Snap, and navigation aliases.</p>
+                <p>It's configured to run after Fastfetch, providing useful information upon terminal startup.</p>
+            </li>
+            <li>
+                <h4>Prompt & Fetch Configuration:</h4>
+                <ul>
+                    <li><strong>Starship Initialization (<code>eval "$(starship init zsh)"</code>):</strong> Initializes the Starship prompt, which provides a highly customizable and informative prompt.</li>
+                    <li><strong>Fastfetch Execution (<code>/home/aiwasevil/Gemini-Cli/fastfetch-config/random-fastfetch.sh</code>):</strong> Runs the custom Fastfetch script to display system information with a random logo upon terminal startup.</li>
+                    <li><strong>Cheat Sheet Display (<code>show_cheatsheet</code>):</strong> Executes the custom cheat sheet function.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Custom Aliases:</h4>
+                <ul>
+                    <li><strong>General Utility & Navigation:</strong> <code>c</code> (clear), <code>h</code> (history), <code>e</code> (exit), <code>duf</code>, <code>dfh</code>, <code>htop</code>, <code>path</code>, <code>..</code>, <code>...</code>.</li>
+                    <li><strong>LSD Aliases:</strong> <code>ls</code> (aliased to <code>lsd</code>), <code>l</code>, <code>la</code>, <code>lla</code>, <code>lt</code> (tree view for <code>lsd</code>).</li>
+                    <li><strong>Arch Linux & System Management (Pacman):</strong> <code>update</code>, <code>upg</code>, <code>install</code>, <code>remove</code>, <code>search</code>, <code>installed</code>, <code>orphan</code>, <code>paclean</code>, <code>paclog</code>, <code>pkinfo</code>.</li>
+                    <li><strong>Snap Management:</strong> <code>snaps</code>, <code>snapsearch</code>, <code>snapup</code>, <code>snapdel</code>.</li>
+                    <li><strong>Git Workflow:</strong> <code>ga</code> (git add -A), <code>gc</code> (git commit -m), <code>gp</code> (git push), <code>gs</code> (git status -sb), <code>glog</code> (git log --oneline --graph).</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Terminal Settings & <code>thefuck</code>:</h4>
+                <ul>
+                    <li><code>export TERM="xterm-256color"</code>: Sets the terminal type for better color support.</li>
+                    <li><code>eval $(thefuck --alias)</code>: Integrates <code>thefuck</code>, which allows you to correct previous mistyped commands by simply typing <code>fuck</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <h4><code>vivid</code> and <code>LS_COLORS</code> (Potential Duplication/Override):</h4>
+                <p>The <code>.zshrc</code> contains <code>eval "$(vivid generate zsh)"</code> and <code>export LS_COLORS="${LS_COLORS//;42/}"</code> at the end. These lines are crucial for <code>lsd</code>'s color management, ensuring vibrant colors and removing unwanted background colors. If these are also present earlier and commented out, ensure the active ones are correctly placed to override or apply the desired <code>LS_COLORS</code>.</p>
+            </li>
+        </ol>
+
+        <h3>Applying this Configuration:</h3>
+        <ol>
+            <li><strong>Backup your existing <code>.zshrc</code>:</strong> Before making any changes, always back up your current <code>~/.zshrc</code> file.</li>
+            <li><strong>Replace your <code>.zshrc</code>:</strong> Copy this <code>.zshrc</code> file to your home directory: <code>cp /home/aiwasevil/AI/zsh-config/.zshrc ~/.zshrc</code></li>
+            <li><strong>Install dependencies:</strong> Ensure you have <code>Oh My Zsh</code>, <code>Starship</code>, <code>Fastfetch</code>, <code>lsd</code>, <code>vivid</code>, <code>fzf</code>, and <code>thefuck</code> installed, along with the necessary Zsh plugins.</li>
+            <li><strong>Open a new terminal:</strong> The changes will take effect in new Zsh sessions.</li>
+        </ol>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glava Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Glava Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Configuring and Launching Glava Audio Visualizer</h2>
+        <p>This tutorial explains how to set up and launch Glava, a real-time audio visualizer, and how to use different GLSL shaders to customize its appearance. It also covers a script to automatically position Glava on your desktop.</p>
+
+        <h3>Components:</h3>
+        <ul>
+            <li><code>launch_glava.sh</code>: A shell script to kill existing Glava instances, launch Glava in desktop mode, and position its window.</li>
+            <li><code>glava/</code>: A directory containing various GLSL shader files (<code>.glsl</code>) that define different visualizer styles.</li>
+        </ul>
+
+        <h3>Steps:</h3>
+
+        <ol>
+            <li>
+                <h4>Understanding Glava GLSL Shaders:</h4>
+                <p>Glava uses GLSL (OpenGL Shading Language) files to define its visualizer effects. Each <code>.glsl</code> file in the <code>glava/</code> directory represents a unique visual style.</p>
+                <p>Examples include <code>bars.glsl</code>, <code>circle.glsl</code>, <code>graph.glsl</code>, <code>radial.glsl</code>, and <code>wave.glsl</code>.</p>
+                <p>You can choose which shader Glava uses by specifying it with the <code>-s</code> or <code>--shader</code> option when launching Glava (e.g., <code>glava -s /path/to/glava/bars.glsl</code>).</p>
+            </li>
+            <li>
+                <h4>Setting up the Glava Launcher (<code>launch_glava.sh</code>):</h4>
+                <p>This script provides a convenient way to manage and position your Glava instance.</p>
+                <p><strong>Content of <code>launch_glava.sh</code>:</strong></p>
+                <pre><code class="language-bash">#!/bin/bash
+
+# Kill any existing Glava instances
+killall glava
+
+# Launch Glava in the background
+glava --desktop &
+
+# Give Glava a moment to start and create its window
+sleep 2
+
+# Find Glava's window ID and move/resize it
+# Replace "GLava" with the actual window title if it's different
+# The geometry is WxH+X+Y
+xdotool search --name "GLava" windowmove 0 668 windowsize 1366 100
+</code></pre>
+                <p><strong>Explanation:</strong></p>
+                <ul>
+                    <li><code>killall glava</code>: Ensures no other Glava processes are running.</li>
+                    <li><code>glava --desktop &</code>: Launches Glava in desktop mode (it will appear behind your desktop icons) and runs it in the background.</li>
+                    <li><code>sleep 2</code>: A short delay to allow Glava to fully start.</li>
+                    <li><code>xdotool search --name "GLava" windowmove 0 668 windowsize 1366 100</code>: This command uses <code>xdotool</code> to find the Glava window by its name ("GLava") and then moves it to the specified X and Y coordinates (0, 668) and resizes it to a width of 1366 pixels and a height of 100 pixels. You might need to adjust these values (<code>windowmove</code> and <code>windowsize</code>) to fit your screen resolution and desired position.</li>
+                </ul>
+                <p><strong>Make it executable:</strong></p>
+                <pre><code class="language-bash">chmod +x /home/aiwasevil/AI/glava-config/launch_glava.sh</code></pre>
+            </li>
+            <li>
+                <h4>Launching Glava:</h4>
+                <ul>
+                    <li><strong>Using the script:</strong>
+                        <pre><code class="language-bash">./launch_glava.sh</code></pre>
+                    </li>
+                    <li><strong>Manually with a specific shader:</strong>
+                        <pre><code class="language-bash">glava --desktop -s /home/aiwasevil/AI/glava-config/glava/bars.glsl &</code></pre>
+                        (Replace <code>bars.glsl</code> with any other <code>.glsl</code> file from your <code>glava/</code> directory.)
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Integration with your Desktop Environment:</h3>
+        <p>You can add the <code>launch_glava.sh</code> script to your desktop environment's autostart settings to have Glava launch automatically when you log in.</p>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

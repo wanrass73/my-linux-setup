@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitty Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Kitty Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Customizing Kitty Terminal with Configuration and Themes</h2>
+        <p>This tutorial will guide you through configuring the Kitty terminal emulator, including setting fonts, adjusting appearance, and applying custom themes to personalize your terminal experience.</p>
+
+        <h3>Components:</h3>
+        <ul>
+            <li><code>kitty.conf</code>: The main configuration file for Kitty, where you define global settings and include themes.</li>
+            <li><code>kitty-themes/</code>: A directory containing various <code>.conf</code> files, each defining a different color scheme or theme for Kitty.</li>
+        </ul>
+
+        <h3>Steps:</h3>
+
+        <ol>
+            <li>
+                <h4>Locating Kitty Configuration Files:</h4>
+                <p>Kitty's main configuration file is typically found at <code>~/.config/kitty/kitty.conf</code>.</p>
+                <p>Themes are usually located in a subdirectory, such as <code>~/.config/kitty/kitty-themes/</code>.</p>
+            </li>
+            <li>
+                <h4>Understanding <code>kitty.conf</code> (Main Configuration):</h4>
+                <p>The <code>kitty.conf</code> file allows you to customize almost every aspect of your Kitty terminal.</p>
+                <p><strong>Example <code>kitty.conf</code> content:</strong></p>
+                <pre><code class="language-conf"># /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
+
+# you can choose themes from $HOME/.config/kitty/kitty-themes/
+include ./kitty-themes/Solarized_Dark.conf
+
+font_family FantasqueSansM Nerd Font Mono Bold
+font_size 14.0
+bold_font auto
+italic_font auto
+bold_italic_font auto
+
+background_opacity 0.9
+dynamic_background_opacity 1
+confirm_os_window_close 0
+
+# Animated cursor
+cursor_trail 1
+
+# change to x11 or wayland or leave auto
+linux_display_server auto
+
+scrollback_lines 2000
+wheel_scroll_min_lines 1
+
+enable_audio_bell no
+
+window_padding_width 4
+
+selection_foreground none
+selection_background none
+</code></pre>
+                <p><strong>Key settings explained:</strong></p>
+                <ul>
+                    <li><code>include ./kitty-themes/Solarized_Dark.conf</code>: This line is used to apply a theme. To change your theme, simply modify the path to point to a different <code>.conf</code> file within your <code>kitty-themes/</code> directory.</li>
+                    <li><code>font_family</code>, <code>font_size</code>: Customize the font and its size. It's recommended to use a Nerd Font for proper icon display.</li>
+                    <li><code>background_opacity</code>: Adjust the transparency of the terminal background.</li>
+                    <li><code>cursor_trail</code>: Enables an animated cursor trail.</li>
+                    <li><code>linux_display_server</code>: Specifies the display server backend (e.g., <code>x11</code>, <code>wayland</code>, or <code>auto</code>).</li>
+                    <li><code>scrollback_lines</code>: Sets the number of lines kept in the scrollback buffer.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Applying Themes from <code>kitty-themes/</code>:</h4>
+                <p>The <code>kitty-themes/</code> directory contains various pre-defined color schemes.</p>
+                <p><strong>Example theme file (<code>Solarized_Dark.conf</code>):</strong></p>
+                <pre><code class="language-conf">background #001e26
+foreground #708183
+cursor #708183
+selection_background #002731
+color0 #002731
+color8 #001e26
+color1 #d01b24
+color9 #bd3612
+color2 #728905
+color10 #465a61
+color3 #a57705
+color11 #52676f
+color4 #2075c7
+color12 #708183
+color5 #c61b6e
+color13 #5856b9
+color6 #259185
+color14 #81908f
+color7 #e9e2cb
+color15 #fcf4dc
+selection_foreground #001e26
+</code></pre>
+                <p>To apply a different theme, open your <code>kitty.conf</code> file and change the <code>include</code> line to point to the desired theme file (e.g., <code>include ./kitty-themes/OneDark.conf</code>).</p>
+                <p>After saving changes to <code>kitty.conf</code>, Kitty usually reloads its configuration automatically. If not, you can force a reload by pressing <code>Ctrl+Shift+F5</code> within a Kitty window.</p>
+            </li>
+            <li>
+                <h4>Further Customization:</h4>
+                <p>Explore the Kitty documentation for more advanced customization options, including keybindings, window layouts, and tab management.</p>
+            </li>
+        </ol>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

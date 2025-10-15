@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waybar Cava Audio Visualizer Integration Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Cava Audio Visualizer Integration Tutorial</h1>
+    </header>
+    <main>
+        <h2>Cava Audio Visualizer Integration</h2>
+        <ul>
+            <li><strong>Purpose:</strong> This script integrates the Cava console-based audio visualizer into your Waybar setup, providing a dynamic and visually appealing audio feedback directly in your status bar.</li>
+            <li><strong>Functionality:</strong>
+                <ul>
+                    <li>Ensures Cava is installed.</li>
+                    <li>Generates a temporary Cava configuration file with specific settings for Waybar output (e.g., framerate, number of bars, input source, gradient colors).</li>
+                    <li>Translates Cava's numerical output into Unicode bar characters (<code> ▂▃▄▅▆▇█</code>) for a compact visual representation.</li>
+                    <li>Manages a single instance of Cava to prevent multiple visualizers from running simultaneously.</li>
+                </ul>
+            </li>
+            <li><strong>Usage:</strong> This script is typically run as a custom module within your Waybar configuration.
+                <pre><code class="language-bash">./scripts/WaybarCava.sh</code></pre>
+                (You would then configure Waybar to execute this script and display its output.)
+            </li>
+        </ul>
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini CLI Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Gemini CLI Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Setting up Gemini CLI with a Custom Fastfetch Display</h2>
+        <p>This tutorial guides you through setting up a desktop shortcut for the Gemini Command Line Interface (CLI) and using a custom Fastfetch configuration that might be displayed alongside your CLI interactions.</p>
+
+        <h3>Components:</h3>
+        <ul>
+            <li><code>config.jsonc</code>: A Fastfetch configuration file tailored for a CLI environment.</li>
+            <li><code>gemini-cli.desktop</code>: A desktop entry file to easily launch the Gemini CLI.</li>
+            <li><code>launch_gemini.sh</code>: A simple shell script to navigate to the Gemini CLI directory and execute the <code>gemini</code> command.</li>
+        </ul>
+
+        <h3>Steps:</h3>
+
+        <ol>
+            <li>
+                <h4>Understanding the Fastfetch Configuration (<code>config.jsonc</code>):</h4>
+                <p>This <code>config.jsonc</code> file is a Fastfetch configuration. It defines how Fastfetch will display system information, including OS, kernel, packages, shell, WM, CPU, GPU, memory, etc., with specific icons and colors.</p>
+                <p>It also specifies a <code>logo</code> using <code>kitty-direct</code> from <code>/home/aiwasevil/Pictures/FastfetchLogos</code>.</p>
+                <p><strong>Content of <code>config.jsonc</code>:</strong></p>
+                <pre><code class="language-jsonc">{
+ "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+ "logo": {
+ "type": "kitty-direct",
+ "source": "/home/aiwasevil/Pictures/FastfetchLogos",
+ "width": 40,
+ "height": 21
+ },
+ "display": {
+ "separator": " 󰑃  "
+ },
+ "modules": [
+     "break",
+     {
+     "type": "os",
+     "key": " DISTRO",
+     "keyColor": "yellow"
+     },
+     {
+     "type": "kernel",
+     "key": "│ ├",
+     "keyColor": "yellow"
+     },
+     {
+     "type": "packages",
+     "key": "│ ├󰏖",
+     "keyColor": "yellow"
+     },
+     {
+     "type": "shell",
+     "key": "│ └",
+     "keyColor": "yellow"
+     },
+     {
+     "type": "wm",
+     "key": " DE/WM",
+     "keyColor": "blue"
+     },
+     {
+     "type": "wmtheme",
+     "key": "│ ├󰉼",
+     "keyColor": "blue"
+     },
+     {
+     "type": "icons",
+     "key": "│ ├󰀻",
+     "keyColor": "blue"
+     },
+     {
+         "type": "cursor",
+         "key": "│ ├",
+         "keyColor": "blue"
+     },
+     {
+         "type": "terminalfont",
+         "key": "│ ├",
+         "keyColor": "blue"
+     },
+     {
+     "type": "terminal",
+     "key": "│ └",
+     "keyColor": "blue"
+     },
+     {
+     "type": "host",
+     "key": "󰌢 SYSTEM",
+     "keyColor": "green"
+     },
+     {
+     "type": "cpu",
+     "key": "│ ├󰻠",
+     "keyColor": "green"
+     },
+     {
+     "type": "gpu",
+     "key": "│ ├󰻑",
+     "format": "{2}",
+     "keyColor": "green"
+     },
+     {
+             "type": "display",
+     "key": "│ ├󰍹",
+     "keyColor": "green",
+     "compactType": "original-with-refresh-rate"
+     },
+     {
+     "type": "memory",
+     "key": "│ ├󰾆",
+     "keyColor": "green"
+     },
+     {
+     "type": "swap",
+     "key": "│ ├󰓡",
+     "keyColor": "green"
+     },
+     {
+     "type": "uptime",
+     "key": "│ ├󰅐",
+     "keyColor": "green"
+     },
+     {
+     "type": "display",
+     "key": "│ └󰍹",
+     "keyColor": "green"
+     },
+     {
+     "type": "sound",
+     "key": " AUDIO",
+     "format": "{2}",
+     "keyColor": "magenta"
+     },
+     {
+     "type": "player",
+     "key": "│ ├󰥠",
+     "keyColor": "magenta"
+     },
+     {
+     "type": "media",
+     "key": "│ └󰝚",
+     "keyColor": "magenta"
+     },
+     "break"
+     ]
+ }</code></pre>
+                <p><strong>To use this Fastfetch configuration:</strong> You would typically run Fastfetch with this specific config file, for example: <code>fastfetch --config /home/aiwasevil/AI/gemini-cli-config/config.jsonc</code> in your terminal. This would display the system information before you interact with the Gemini CLI.</p>
+            </li>
+            <li>
+                <h4>Setting up the Gemini CLI Launcher (<code>launch_gemini.sh</code>):</h4>
+                <p>This script simply changes the directory to where your <code>gemini</code> executable is located (<code>/home/aiwasevil/Gemini-Cli</code>) and then runs the <code>gemini</code> command, passing any arguments it receives.</p>
+                <p><strong>Content of <code>launch_gemini.sh</code>:</strong></p>
+                <pre><code class="language-bash">#!/bin/bash
+cd /home/aiwasevil/Gemini-Cli
+gemini "$@"
+</code></pre>
+                <p><strong>Make it executable:</strong></p>
+                <pre><code class="language-bash">chmod +x /home/aiwasevil/AI/gemini-cli-config/launch_gemini.sh</code></pre>
+            </li>
+            <li>
+                <h4>Creating a Desktop Shortcut (<code>gemini-cli.desktop</code>):</h4>
+                <p>This file creates a convenient shortcut to launch the Gemini CLI.</p>
+                <p><strong>Content of <code>gemini-cli.desktop</code>:</strong></p>
+                <pre><code class="language-ini">[Desktop Entry]
+Name=Gemini CLI
+Comment=Launch the Gemini Command Line Interface
+Exec=/home/aiwasevil/Gemini-Cli/config/launch_gemini.sh -m gemini-1.5-flash
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Utility;Development;
+</code></pre>
+                <p><strong>Installation:</strong> Copy this file to your applications directory (e.g., <code>~/.local/share/applications/</code> or <code>/usr/share/applications/</code>) to make it appear in your application launcher.</p>
+                <pre><code class="language-bash">cp /home/aiwasevil/AI/gemini-cli-config/gemini-cli.desktop ~/.local/share/applications/</code></pre>
+                <p>The <code>Exec</code> line points to your <code>launch_gemini.sh</code> script and passes the model argument <code>-m gemini-1.5-flash</code> to it. The <code>Terminal=true</code> ensures it opens in a terminal window.</p>
+            </li>
+        </ol>
+
+        <h3>Usage:</h3>
+        <ul>
+            <li>To launch the Gemini CLI, simply click on the desktop shortcut you created.</li>
+            <li>If you wish to see the custom Fastfetch display before interacting with the Gemini CLI, open a terminal and run <code>fastfetch --config /home/aiwasevil/AI/gemini-cli-config/config.jsonc</code> first, then run your <code>gemini</code> command.</li>
+        </ul>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

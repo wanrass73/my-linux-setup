@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fastfetch Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Fastfetch Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Fastfetch with Random Custom Logos</h2>
+        <p>This tutorial explains how to use Fastfetch with custom ASCII art logos that are randomly selected from a directory. This setup uses a shell script to dynamically choose a logo each time Fastfetch is run.</p>
+
+        <h3>Prerequisites:</h3>
+        <ul>
+            <li>Fastfetch installed on your system.</li>
+            <li>A directory containing custom ASCII art logos (e.g., <code>.txt</code> files).</li>
+        </ul>
+
+        <h3>Steps:</h3>
+        <ol>
+            <li>
+                <h4>Prepare your logos:</h4>
+                <p>Create or download ASCII art logos and save them as <code>.txt</code> files in a designated directory. For this example, the script uses <code>/home/aiwasevil/Pictures/FastfetchLogos</code>.</p>
+            </li>
+            <li>
+                <h4>Understand the script (<code>random-fastfetch.sh</code>):</h4>
+                <p>Here's the content of the script:</p>
+                <pre><code>#!/bin/bash
+
+# Define the directory containing the logos
+LOGO_DIR="/home/aiwasevil/Pictures/FastfetchLogos"
+
+# Select a random logo using shuf
+SELECTED_LOGO=$(find "$LOGO_DIR" -maxdepth 1 -type f -name "*.txt" | shuf -n 1)
+
+if [ -z "$SELECTED_LOGO" ]; then
+    echo "No images found by find command in $LOGO_DIR. Using default fastfetch."
+    fastfetch # Run fastfetch without logo if no images found
+    exit 1
+fi
+
+# Run fastfetch with the selected logo and specified dimensions, using default modules
+fastfetch --logo "$SELECTED_LOGO" --logo-type file --logo-height 12 --logo-width 10
+</code></pre>
+                <ul>
+                    <li><code>LOGO_DIR</code>: This variable points to the directory where your ASCII art logos are stored. Make sure to update this path if your logos are in a different location.</li>
+                    <li><code>SELECTED_LOGO</code>: The script uses <code>find</code> and <code>shuf</code> to randomly pick one <code>.txt</code> file from the <code>LOGO_DIR</code>.</li>
+                    <li><code>fastfetch --logo "$SELECTED_LOGO" --logo-type file --logo-height 12 --logo-width 10</code>: This is the core command. It tells Fastfetch to use the randomly selected file as a logo, specifying its type, height, and width.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Create the script:</h4>
+                <p>Save the provided <code>random-fastfetch.sh</code> script to a convenient location (e.g., <code>/home/aiwasevil/AI/fastfetch-config/random-fastfetch.sh</code>).</p>
+            </li>
+            <li>
+                <h4>Make the script executable:</h4>
+                <p>Open your terminal and run:</p>
+                <pre><code>chmod +x /home/aiwasevil/AI/fastfetch-config/random-fastfetch.sh</code></pre>
+            </li>
+            <li>
+                <h4>Run Fastfetch with a random logo:</h4>
+                <p>Execute the script from your terminal:</p>
+                <pre><code>./random-fastfetch.sh</code></pre>
+            </li>
+        </ol>
+        <p>Each time you run the script, Fastfetch will display with a different ASCII art logo from your collection!</p>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

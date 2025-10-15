@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsole Config Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Konsole Config Tutorial</h1>
+    </header>
+    <main>
+        <h2>Customizing Konsole with Profiles</h2>
+        <p>This tutorial will guide you through creating and customizing Konsole profiles, allowing you to define specific appearance and behavior settings for different terminal uses. We'll use the <code>Aiwasevil.profile</code> as an example.</p>
+
+        <h3>Components:</h3>
+        <ul>
+            <li><code>Aiwasevil.profile</code>: A Konsole profile configuration file.</li>
+        </ul>
+
+        <h3>Steps:</h3>
+
+        <ol>
+            <li>
+                <h4>Understanding Konsole Profiles:</h4>
+                <p>Konsole uses profile files to store custom settings for different terminal sessions. These profiles can define aspects like color schemes, fonts, terminal size, and more.</p>
+                <p>Profile files are typically stored in <code>~/.local/share/konsole/</code> or <code>~/.kde/share/apps/konsole/</code>.</p>
+            </li>
+            <li>
+                <h4>Analyzing <code>Aiwasevil.profile</code>:</h4>
+                <p><strong>Content of <code>Aiwasevil.profile</code>:</strong></p>
+                <pre><code class="language-ini">[Appearance]
+ColorScheme=Dracula
+Font=Fira Code,12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[General]
+Name=Aiwasevil
+Parent=FALLBACK/
+TerminalColumns=89
+TerminalRows=25
+</code></pre>
+                <p><strong>Key settings explained:</strong></p>
+                <ul>
+                    <li><code>ColorScheme=Dracula</code>: This sets the color scheme for the profile to "Dracula". You would need to have the Dracula color scheme installed in Konsole for this to work.</li>
+                    <li><code>Font=Fira Code,12,...</code>: This specifies the font to be used as "Fira Code" with a size of 12. The other numbers are font-specific parameters.</li>
+                    <li><code>Name=Aiwasevil</code>: This is the display name of the profile within Konsole.</li>
+                    <li><code>TerminalColumns=89</code>, <code>TerminalRows=25</code>: These set the default dimensions (width and height) of the terminal when this profile is used.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Creating and Using a Custom Profile:</h4>
+                <p><strong>Save the profile file:</strong> Place the <code>Aiwasevil.profile</code> file in the appropriate Konsole profiles directory (e.g., <code>~/.local/share/konsole/</code>).</p>
+                <pre><code class="language-bash">cp /home/aiwasevil/AI/konsole-config/Aiwasevil.profile ~/.local/share/konsole/</code></pre>
+                <p><strong>Apply the profile in Konsole:</strong></p>
+                <ol>
+                    <li>Open Konsole.</li>
+                    <li>Go to <code>Settings &gt; Manage Profiles...</code>.</li>
+                    <li>You should see "Aiwasevil" listed among your profiles. Select it and set it as default, or choose it for new tabs/windows.</li>
+                    <li>Ensure that the "Dracula" color scheme and "Fira Code" font are installed on your system for the profile to render correctly.</li>
+                </ol>
+            </li>
+            <li>
+                <h4>Further Customization:</h4>
+                <p>You can create multiple profiles for different tasks, each with its own unique settings.</p>
+                <p>Explore Konsole's <code>Settings</code> menu to discover more customization options that can be included in your profile files.</p>
+            </li>
+        </ol>
+        
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

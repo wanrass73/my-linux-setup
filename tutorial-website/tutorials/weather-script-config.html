@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Script for Waybar Tutorial</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Weather Script for Waybar Tutorial</h1>
+    </header>
+    <main>
+        <h2>Dynamic Weather Information for Waybar</h2>
+        <ul>
+            <li><strong>Purpose:</strong> This Python script fetches current weather and air quality data from Open-Meteo APIs and formats it for display in Waybar. It provides detailed weather information, including temperature, conditions, wind, humidity, and AQI.</li>
+            <li><strong>Functionality:</strong>
+                <ul>
+                    <li>Supports configuration via environment variables for units (metric/imperial), location (manual coordinates or IP-based geolocation), and cache settings.</li>
+                    <li>Fetches data from Open-Meteo and Open-Meteo Air Quality APIs.</li>
+                    <li>Maps WMO weather codes to appropriate icons and status descriptions.</li>
+                    <li>Generates Waybar-compatible JSON output and maintains a simple text cache.</li>
+                    <li>Includes robust error handling and caching mechanisms.</li>
+                </ul>
+            </li>
+            <li><strong>Usage:</strong> This script is designed to be run as a custom module in Waybar, providing real-time weather updates.
+                <pre><code class="language-bash">python3 ./scripts/Weather.py</code></pre>
+                (You would configure Waybar to execute this Python script and parse its JSON output.)
+            </li>
+        </ul>
+        <a href="../index.html">Back to Home</a>
+    </main>
+    <footer>
+        <p>&copy; 2025 wanrass73. All rights reserved.</p>
+    </footer>
+</body>
+</html>

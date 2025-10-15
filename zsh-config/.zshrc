@@ -1,3 +1,4 @@
+echo "Zshrc loaded!"
 # ==========================================================
 # Konfigurasi Asas Zsh & Oh-My-Zsh
 # ==========================================================
@@ -8,7 +9,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Tema telah disahkan wujud: agnosterzak
-ZSH_THEME="agnosterzak"
+ZSH_THEME=""
 
 plugins=(
     git
@@ -71,7 +72,7 @@ show_cheatsheet() {
 # 1. Mulakan Starship dahulu (WAJIB DAHULU)
 eval "$(starship init zsh)"
 # 2. Jalankan skrip fetch selepas prompt dimuatkan
-/home/aiwasevil/Gemini-Cli/fastfetch-config/random-fastfetch.sh
+/home/aiwasevil/AI/fastfetch-config/random-fastfetch.sh
 # 3. JALANKAN NOTA (CHEAT SHEET) SELEPAS FASTFETCH
 show_cheatsheet
 
@@ -80,7 +81,13 @@ show_cheatsheet
 # Custom Aliases
 # ==========================================================
 
-# === General Utility & Navigation Aliases ===
+
+
+
+
+
+
+
 alias c="clear"
 alias h="history"
 alias e="exit"
@@ -92,14 +99,10 @@ alias path='echo $PATH | tr -s ":" "\n"'
 # Navigasi Cepat
 alias ..="cd .."
 alias ...="cd ../.."
+alias lsd="lsd --tree --classic"
 
-# === LSD Aliases (Set-up icons for files/directories) ===
-alias ls='lsd'
-alias l='ls -CF'
-alias la='ls -A'
-alias lla='ls -la'
-alias lt='lsd --tree --classic'
-alias lsd="lsd"
+
+
 
 # === Arch Linux & System Management (Pacman) ===
 # Kemas kini penuh
@@ -119,15 +122,7 @@ alias paclog='sudo less /var/log/pacman.log'
 # Paparkan maklumat terperinci pakej
 alias pkinfo='pacman -Qi'
 
-# === Snap Management ===
-# Senaraikan pakej Snap
-alias snaps='snap list'
-# Cari pakej Snap
-alias snapsearch='snap find'
-# Kemas kini semua pakej Snap
-alias snapup='sudo snap refresh'
-# Padam pakej Snap
-alias snapdel='sudo snap remove'
+
 
 # === Git Workflow ===
 # Tambah semua perubahan

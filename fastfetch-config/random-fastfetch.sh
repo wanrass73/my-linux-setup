@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the directory containing the logos
-LOGO_DIR="/home/aiwasevil/Pictures/FastfetchLogos"
+LOGO_DIR="/home/aiwasevil/AI/fastfetch-config/FastfetchLogos"
 
 # Select a random logo using shuf
 SELECTED_LOGO=$(find "$LOGO_DIR" -maxdepth 1 -type f -name "*.txt" | shuf -n 1)
